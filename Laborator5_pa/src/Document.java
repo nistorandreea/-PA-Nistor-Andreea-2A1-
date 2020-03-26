@@ -7,8 +7,7 @@ public class Document implements Serializable {
     private String id;
     private String name;
     private String location; //file name or Web page
-
-    private Map<String, Object> tags = new HashMap<>();
+    private Map<String, String> tags;
 
     //constructor
 
@@ -16,6 +15,7 @@ public class Document implements Serializable {
         this.id = id;
         this.name = name;
         this.location = location;
+        this.tags = new HashMap();
     }
 
     //setters and getters
@@ -43,6 +43,13 @@ public class Document implements Serializable {
     public String getLocation() {
         return location;
     }
+      
+    public void addTags(String key, String value)
+    {
+        this.tags.put(key, value);
+    }
+
+    public Map<String, String> getTags() { return this.tags; }
 
     @Override
     public boolean equals(Object o) {
@@ -58,10 +65,6 @@ public class Document implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id, name, location, tags);
-    }
-
-    public void addTag(String key, Object obj) {
-        tags.put(key, obj);
     }
 //…
 }
